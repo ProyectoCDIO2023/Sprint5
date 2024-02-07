@@ -8,11 +8,6 @@
 
 pHSensor::pHSensor() {}
 
-void pHSensor::begin() {
-  ads.begin();
-  ads.setGain(GAIN_ONE);
-}
-
 float pHSensor::calculatepH(int adcValue) {
   float voltage = adcValue * 0.0001875; // La resolución es 0.1875 mV por bit para GAIN_TWOTHIRDS
   float pHValue = 3.5 * voltage + Offset;
