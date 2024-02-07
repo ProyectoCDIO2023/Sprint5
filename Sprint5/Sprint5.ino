@@ -1,6 +1,8 @@
 #include <ESP8266WiFi.h>
 #include "Sensors.h"
 
+Adafruit_ADS1115 ads;
+
 const float umbralOscuridad = 65;    // Voltaje para la oscuridad
 const float umbralSombra = 80;       // Voltaje para la sombra
 const float umbralLuzAmbiente = 117;  // Voltaje para luz ambiente
@@ -15,8 +17,8 @@ LightSensor lightSensor(umbralOscuridad, umbralSombra, umbralLuzAmbiente, umbral
 void setup() {
   Serial.begin(9600);
   Serial.println("Inicializando...");
-
-  pH.begin();
+  ads.begin();
+  ads.setGain(GAIN_ONE);
 }
 
 void loop() {
